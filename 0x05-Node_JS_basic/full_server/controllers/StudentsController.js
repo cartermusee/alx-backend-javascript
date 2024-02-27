@@ -1,7 +1,7 @@
 /**
  * the Students controller
  */
-import readDatabase from "../utils";
+import readDatabase from '../utils';
 
 class StudentsController {
   static async getAllStudents(request, response) {
@@ -15,18 +15,17 @@ class StudentsController {
         }
         if (i > k) {
           return 1;
-        } else {
-          return 0;
         }
+        return 0;
       });
       response.statusCode = 200;
-      response,write('This is the list of our students\n');
-      for (const fd in fields) {
+      response.write('This is the list of our students\n');
+      for (const fd of fields) {
         response.write(`Number of students in ${fd}: ${data[fd].length}. List: ${data[fd].join(', ')}`);
         if (fields.indexOf(fd) !== fields.length - 1) response.write('\n');
       }
     } catch (err) {
-        response.statusCode = 500;
+      response.statusCode = 500;
       response.write(err.message);
     }
     response.end();
@@ -50,7 +49,6 @@ class StudentsController {
       response.end();
     }
   }
+}
 
-};
-
-export default StudentsController
+export default StudentsController;

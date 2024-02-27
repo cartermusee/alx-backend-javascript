@@ -1,11 +1,11 @@
 /**
  * Write the routes
  */
+import { Router } from 'express';
 import AppController from '../controllers/AppController';
 import studentController from '../controllers/StudentsController';
 
-const express = require('express');
-const router = express.Router();
+const router = Router();
 
 router.get('/', AppController.getHomepage);
 router.get('/students', studentController.getAllStudents);

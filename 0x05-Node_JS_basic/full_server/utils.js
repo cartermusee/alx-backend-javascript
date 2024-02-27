@@ -4,24 +4,27 @@
 import fs from 'fs';
 
 function readDatabase(path) {
-  return new Promise ((resolve, reject) => {
-    fs.readFile(path, 'utf-8', (err, data) => {
-      if (err) {
-        reject(err)
-      } else{
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) reject(new Error('Cannot load the database'));
+      else {
         const values = data.split('\n');
-        const fname = [];
-        values.forEach((value) => {
-          const field = value.split(',');
-          for (let i = 0; i < field.length; i++){
-            if (field[i] === 'firstname'){
-                fname.push(field[0])
+        values.splice(0, 1);
+        const dataVal = {};
+        values.forEach((val) => {
+          const field = val.split(',');
+          if (field[3] && field[0]) {
+            if (Object.keys(dataVal).indexOf(field[3]) === -1) {
+              dataVal[field[3]] = [field[0]];
+            } else {
+              (dataVal[field[3]]).push(field[0]);
             }
           }
-        })
+        });
+        resolve(dataVal);
       }
-      resolve(fname);
     });
   });
-};
+}
+
 export default readDatabase;
