@@ -1,3 +1,6 @@
+/**
+ * Reading a file asynchronously with Node JS
+ */
 const fs = require('fs');
 
 const countStudents = (path) => new Promise((resolve, reject) => {
