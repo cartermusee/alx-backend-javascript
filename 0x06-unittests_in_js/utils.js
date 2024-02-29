@@ -1,7 +1,9 @@
 /**
- * a function should round a and b and return the sum of it
+ * 
  */
-const calculateNumber = (type, a, b) => {
+
+const Utils = {
+  calculateNumber (type, a, b) {
     if (type === 'SUM') {
       return Math.round(a) + Math.round(b);
     }
@@ -15,7 +17,7 @@ const calculateNumber = (type, a, b) => {
         return Math.round(a) / Math.round(b);
       }
     }
-}
-    
-  module.exports = calculateNumber;
-    
+  }
+};
+
+module.exports = Utils;
