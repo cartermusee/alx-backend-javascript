@@ -2,7 +2,7 @@
  * tests for calculateNumber
  */
 const assert = require('chai').assert;
-const calculateNumber = require('./1-calcul');
+const calculateNumber = require('./2-calcul_chai');
 
 describe('calculateNumber', function(){
   it('Returns the sum of two rounded nums', function(){
