@@ -1,5 +1,5 @@
 /**
- * 
+ * utils module
  */
 
 const Utils = {
