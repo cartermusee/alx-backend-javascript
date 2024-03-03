@@ -12,7 +12,7 @@ describe('cart page', function () {
   });
 
   it('returns correct result', function (done) {
-    request.get('http://localhost:7865/cart/2', function (error, response, body) {
+    request.get('http://localhost:7865/cart/12', function (error, response, body) {
       expect(response.statusCode).to.equal(200);
       expect(body).to.equal('Welcome to the payment system');
       done();
@@ -20,7 +20,7 @@ describe('cart page', function () {
   });
   
   it('returns 404 when no id', function (done) {
-    request.get('http://localhost:7865/cart/lop', function (error, response, body) {
+    request.get('http://localhost:7865/cart/hello', function (error, response, body) {
       expect(response.statusCode).to.equal(404);
       done();
     });
