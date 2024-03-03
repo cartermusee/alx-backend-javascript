@@ -20,4 +20,8 @@ describe('calculateNumber', function(){
   it('Returns the sum of two rounded nums', function(){
     assert.equal(calculateNumber(1.5, 3.7), 6);
   });
+
+  it('Returns the sum of two rounded nums', function(){
+    assert.equal(calculateNumber(1.5, 3.1), 5);
+  });
 });
