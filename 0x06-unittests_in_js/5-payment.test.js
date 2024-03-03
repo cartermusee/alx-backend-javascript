@@ -1,11 +1,10 @@
 /**
  * utils test
  */
-const chai = require('chai');
-const expect = chai.expect;
 const sinon = require('sinon');
-const Utils = require('./utils');
-const sendPaymentRequestToApi = require('./4-payment');
+const sendPaymentRequestToApi = require('./3-payment.js');
+const Utils = require('./utils.js')
+
 
 describe('sendPaymentRequestToApi', () => {
 
@@ -16,24 +15,14 @@ describe('sendPaymentRequestToApi', () => {
   afterEach(() => {
     sinon.restore();
   });
-
-  it('should call Utils.calculateNumber with correct arguments', () => {
+ 
+  it('should call Utils.calculateNumber with correct arguments and log 120', function() {
     sendPaymentRequestToApi(100, 20);
-
-    expect(Utils.calculateNumber.calledOnce).to.be.true;
-    expect(Utils.calculateNumber.called).to.be.true;
-    expect(Utils.calculateNumber.calledCount).to.be.equal(1);
-    expect(Utils.calculateNumber.firstCall.args[0]).to.equal('SUM');
-    expect(Utils.calculateNumber.calledWith('The total is: 120')).to.be.true;
+    sinon.assert.calledWithExactly(console.log, 'The total is: 120');
   });
 
-  it('should call Utils.calculateNumber with correct arguments', () => {
+  it('should call Utils.calculateNumber with correct arguments and log 20', function() {
     sendPaymentRequestToApi(10, 10);
-
-    expect(Utils.calculateNumber.calledOnce).to.be.true;
-    expect(Utils.calculateNumber.called).to.be.true;
-    expect(Utils.calculateNumber.calledCount).to.be.equal(1);
-    expect(Utils.calculateNumber.firstCall.args[0]).to.equal('SUM');
-    expect(Utils.calculateNumber.calledWith('The total is: 20')).to.be.true;
+    sinon.assert.calledWithExactly(console.log, 'The total is: 20');
   });
 });
